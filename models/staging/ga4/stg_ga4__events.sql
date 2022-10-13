@@ -69,7 +69,7 @@ enrich_params as (
         {% if var('filter_trailing_slash',false) is true %} 
             {% if '?' in page_location %} -- assuming standards-compliant url structure, the '?' comes before '#'
                 {{ trim_trailing_slash(page_location, '?') }}
-            {% elseif '#' in page_location %}
+            {% elif '#' in page_location %}
                 {{ trim_trailing_slash(page_location, '#') }}
             {% else %}
                 {{ trim_trailing_slash(page_location) }}
