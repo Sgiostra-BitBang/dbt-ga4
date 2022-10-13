@@ -15,7 +15,7 @@ REGEXP_REPLACE(REGEXP_REPLACE(REGEXP_REPLACE(REGEXP_REPLACE({{url}}, '(\\?|&)({{
     {% if delimiter is none %}
         {{ url|trim('/') }}
     {% else %}
-        {% set pl_list = url|split(delimiter,1) %}
+        {% set pl_list = url.split(delimiter,1) %}
         {% set _ = operator.setitem(pl_list, 0, pl_list[0]|trim('/') ) %}
         {{ pl_list|join() }}
     {% endif %}
