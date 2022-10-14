@@ -11,11 +11,6 @@ REGEXP_REPLACE(REGEXP_REPLACE(REGEXP_REPLACE(REGEXP_REPLACE({{url}}, '(\\?|&)({{
 {% endmacro %}
 
 
-{% macro trim_trailing_slash(url, delimiter=none) %}
-    {% if delimiter is none %}
-        {{ url|trim('/') }}
-    {% else %}
-        {% set pl_list = url.split(delimiter,1).trim('/') %}
-        {{ pl_list|join() }}
-    {% endif %}
+{% macro trim_trailing_slash(url) %}
+    regexp_replace(url, r'.*(\/)(?:\?|#|&|$)', '')
 {% endmacro %}

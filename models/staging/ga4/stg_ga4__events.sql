@@ -66,14 +66,8 @@ enrich_params as (
         * except(page_location),
         {{extract_hostname_from_url('page_location')}} as page_hostname,
         {{extract_query_string_from_url('page_location')}} as page_query_string,
-        {% if var('filter_trailing_slash',false) is true %} 
-            {% if '?' in page_location %} -- assuming standards-compliant url structure, the '?' comes before '#'
-                {{ ga4.trim_trailing_slash(page_location, '?') }}
-            {% elif '#' in page_location %}
-                {{ ga4.trim_trailing_slash(page_location, '#') }}
-            {% else %}
-                {{ ga4.trim_trailing_slash(page_location) }}
-            {% endif %}
+        {% if var('filter_trailing_slash',true) is true %} 
+            {{ ga4.trim_trailing_slash(page_location) }}
         {% else %}
             page_location
         {% endif %} as page_location,
