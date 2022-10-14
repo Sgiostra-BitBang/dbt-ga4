@@ -16,6 +16,7 @@ page_views_by_user_key as (
         first_page_view_event_key,
         last_page_view_event_key
     from page_views_first_last
+    where user_key is not null
 ),
 page_views_joined as (
     select

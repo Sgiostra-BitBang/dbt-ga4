@@ -16,6 +16,7 @@ events_by_user_key as (
         first_event,
         last_event
     from first_last_event
+    where user_key is not null
 ),
 events_joined as (
     select
