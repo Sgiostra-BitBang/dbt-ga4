@@ -5,8 +5,8 @@ models:
     description: Dimension table for users which includes data from the first and last event produced by the user. Unique on user_key
     columns:
       - name: user_key
-        tests:
-          - unique
+#        tests:
+#          - unique
   - name: ga4__sessions
     description: Metrics and dimensions related to sessions such as number of pageviews and event value accrued. Each row represents a single session.
     columns:
